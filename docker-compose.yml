@@ -1,0 +1,40 @@
+version: '3.10'
+
+services:
+  postgres:
+    image: postgis/postgis:latest
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_HOST: postgres
+      POSTGRES_DB: urban_data
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # Persistent storage for PostgreSQL
+      - ./data:/data  # Mount local data folder for PostgreSQL
+    ports:
+      - "5432:5432"
+
+  jupyter:
+    build: .
+    environment:
+      JUPYTER_ENABLE_LAB: "yes"
+    command: jupyter notebook --ip=0.0.0.0 --no-browser --allow-root
+    volumes:
+      - ./notebooks:/home/jovyan/work  # Persistent storage for notebooks
+      - ./data:/home/jovyan/work/data  # Mount local data folder for Jupyter
+    ports:
+      - "8888:8888"
+    depends_on:
+      - postgres
+
+  init-db:
+    image: python:3.8  # Use a lightweight Python image
+    volumes:
+      - ./init_db.py:/init_db.py
+    depends_on:
+      - postgres
+    command: ["python", "/init_db.py"]
+
+volumes:
+  postgres_data:
+    driver: local
