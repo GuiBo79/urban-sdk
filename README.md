@@ -1,4 +1,4 @@
-# Urban Data Analysis and Visualization Task
+# Urban Data Analysis and Visualization
 
 ## Overview
 
@@ -35,22 +35,20 @@ This project demonstrates the use of spatial data analysis with PostgreSQL (Post
 
 ## Setup and Installation
 
-1. Clone the repository:
+### 1. Clone the repository:
 
   ```
     git clone https://github.com/yourusername/urban-data-analysis.git
     cd urban-data-analysis
   ```
 
-
-2. Run Docker Compose:
+### 2. Run Docker Compose:
 
   ```
     docker-compose up
   ```
 
-
-3. Initialize the Database:
+### 3. Initialize the Database:
 
   ```
     docker-compose run init-db
@@ -58,7 +56,7 @@ This project demonstrates the use of spatial data analysis with PostgreSQL (Post
 
 ## Key Features
 
-1. Spatial Queries in PostGIS
+### 1. Spatial Queries in PostGIS
 PostGIS allows for sophisticated geospatial queries directly in PostgreSQL:
 
 Roads within a Bounding Box
@@ -75,7 +73,7 @@ AND
     road_name <> 'None';
 ```
 
-2. Visualization with Mapbox GL
+### 2. Visualization with Mapbox GL
 Choropleth Visualization
 
 Interactive overlays with road details
@@ -96,36 +94,22 @@ viz = ChoroplethViz(
 viz.create_html('map_visualization.html')
 ```
 
-3. Data Analysis and Modeling
+### 3. Data Analysis and Modeling
+
 Feature Engineering : Creating new features for non-linear relationships
 
 Predictive Modeling : Using RandomForestRegressor for speed prediction
 
 Performance Metrics : Evaluation using MSE and R² Score
 
-Usage
-Running Jupyter Notebook
-Start Docker Compose
 
 Access Jupyter at <http://localhost:8888>
 
-Running PostGIS Queries
-Use database connection in Jupyter
 
-Execute queries in SQL cells or Python using SQLAlchemy
-
-Reference example_queries.sql for sample queries
-
-Contributing
+## Contributing
 Feel free to contribute by:
 
 Creating pull requests
-
 Opening issues for discussions
-
 Suggesting improvements
-
 Reporting bugs
-
-License
-This project is licensed under the MIT License.
