@@ -33,7 +33,7 @@ services:
       - ./init_db.py:/init_db.py
     depends_on:
       - postgres
-    command: ["python", "/init_db.py"]
+    command: ["sh", "-c", "pip install sqlalchemy geoalchemy2 psycopg2-binary && python /init_db.py"]
 
 volumes:
   postgres_data:

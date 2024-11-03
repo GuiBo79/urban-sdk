@@ -33,7 +33,7 @@ class LinkInfo(Base):
 
 class SpeedData(Base):
     __tablename__ = "speed_data"
-    link_id = Column(Integer, index=True)
+    link_id = Column(Integer, primary_key=True, index=True)
     date_time = Column(DateTime)
     freeflow = Column(Float)
     count = Column(Integer)
