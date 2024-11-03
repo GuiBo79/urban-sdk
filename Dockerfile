@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y libpq-dev && \
     rm -rf /var/lib/apt/lists/*
 
 # Install Python dependencies
-RUN pip install mapboxgl pandas scikit-learn sqlalchemy psycopg2-binary GeoAlchemy2
+RUN pip install mapboxgl pandas scikit-learn sqlalchemy psycopg2-binary GeoAlchemy2 shapely
 
 # Set up work directory
 WORKDIR /home/jovyan/work
