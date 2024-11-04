@@ -19,7 +19,8 @@ Base = declarative_base()
 # Define Tables
 class LinkInfo(Base):
     __tablename__ = "link_info"
-    link_id = Column(Integer, primary_key=True, index=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    link_id = Column(Integer, index=True)
     _length = Column(Float)
     road_name = Column(String)
     usdk_speed_category = Column(Integer)
@@ -33,8 +34,9 @@ class LinkInfo(Base):
 
 class SpeedData(Base):
     __tablename__ = "speed_data"
-    link_id = Column(Integer, primary_key=True, index=True)
-    date_time = Column(DateTime)
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    link_id = Column(Integer, index=True)
+    date_time = Column(DateTime, index=True)
     freeflow = Column(Float)
     count = Column(Integer)
     std_dev = Column(Float)
